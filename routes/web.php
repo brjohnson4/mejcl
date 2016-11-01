@@ -18,3 +18,7 @@ Route::get('/home', 'HomeController@show');
 Route::get('/input', 'ResultController@index');
 
 Route::post('/input', 'ResultController@store');
+
+$router->get('/register', function(){
+         // have this redirect to a page of your choice.
+    });
