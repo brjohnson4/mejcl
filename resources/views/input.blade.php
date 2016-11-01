@@ -29,6 +29,7 @@
                         </div>
                     </div>
                 </div>
+                @if($lastTen->count() > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">Your Last Ten Inputs</div>
                     <div class="panel-body">
@@ -44,6 +45,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
     </div>
