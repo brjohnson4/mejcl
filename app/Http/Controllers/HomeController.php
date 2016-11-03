@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Result;
+use App\Delegate;
 
 class HomeController extends Controller
 {
@@ -25,6 +27,8 @@ class HomeController extends Controller
      */
     public function show()
     {
-        return view('home');
+        $results = Result::count();
+        $students = Delegate::where('Fall', 'Y')->count();
+        return view('home', compact('results', 'students'));
     }
 }
