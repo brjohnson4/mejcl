@@ -14,4 +14,8 @@ class Result extends Model
     	"Score",
     	"user_id",
     	];
+
+    public function delegate() {
+    	return $this->belongsTo('App\Delegate', 'Studentid', 'id');
+    }
 }

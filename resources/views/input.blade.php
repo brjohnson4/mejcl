@@ -33,14 +33,14 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Your Last Ten Inputs</div>
                     <div class="panel-body">
-                        <div class="col-md-4"><h4>Test Number</h4></div>
-                        <div class="col-md-4"><h4>Student ID</h4></div>
-                        <div class="col-md-4"><h4>Score</h4></div>
+                        <div class="col-md-3"><h4>Test Number</h4></div>
+                        <div class="col-md-6"><h4>Student</h4></div>
+                        <div class="col-md-3"><h4>Score</h4></div>
                         <div class="col-md-12">
                         @foreach($lastTen as $test)
-                            <div class="col-md-4">{{ $test->Test }}</div>
-                            <div class="col-md-4">{{ $test->Studentid }}</div>
-                            <div class="col-md-4">{{ $test->Score }}</div>
+                            <div class="col-md-3">{{ $test->Test }}</div>
+                            <div class="col-md-6">{{ $test->Studentid }} - {{ $test->delegate->FirstName }} {{ $test->delegate->LastName }} ({{ $test->delegate->School }})</div>
+                            <div class="col-md-3">{{ $test->Score }}</div>
                         @endforeach
                         </div>
                     </div>
