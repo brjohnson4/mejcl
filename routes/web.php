@@ -19,6 +19,21 @@ Route::get('/input', 'ResultController@index');
 
 Route::post('/input', 'ResultController@store');
 
+Route::get('/results', 'ResultController@show');
+
+Route::post('test-results', 'ResultController@testResults');
+
+Route::get('/olympika-entry', function() { return view('olympika.entry'); })->middleware('dev');
+Route::post('olympika-entry', 'OlympikaController@storeOlympikaEntries');
+
+Route::get('/olympika-input', function() { return view('olympika.input'); })->middleware('dev');
+Route::post('olympika-input-individual', 'OlympikaController@storeIndividual');
+Route::post('olympika-input-school', 'OlympikaController@storeSchool');
+
+Route::get('/creative-input', function() { return view('creative.input'); })->middleware('dev');
+Route::post('creative-input-individual', 'CreativeController@storeIndividual');
+Route::post('creative-input-school', 'CreativeController@storeSchool');
+
 $router->get('/register', function(){
          // have this redirect to a page of your choice.
     });

@@ -8,6 +8,8 @@ use Auth;
 use Validator;
 use Redirect;
 use App\Delegate;
+use App\FallTest;
+use App\Place;
 
 class ResultController extends Controller
 {
@@ -17,6 +19,13 @@ class ResultController extends Controller
         $this->middleware('auth');
 
         // $this->middleware('subscribed');
+    }
+
+    public function show()
+    {
+        $fall_tests = FallTest::all();
+
+        return view('results.index', compact('fall_tests'));
     }
 
 	public function index()
@@ -54,7 +63,7 @@ class ResultController extends Controller
     	});
 
     	Validator::extend('convention', function($attribute, $value, $parameters) {
-    		if(Delegate::where('id', $value)->where('Fall', 'Y')->first()) {
+    		if(Delegate::where('id', $value)->where('Spring', 'Y')->first()) {
     			return 'true';
     		}
     	});
@@ -85,4 +94,16 @@ class ResultController extends Controller
     	return view('input', compact('lastTen'));
 
     }
+
+    public function testResults(Request $request)
+    {
+        $test = $request->input('test');
+        $level = $request->input('level');
+
+        $results = Place::where('Test', $test)->where('Level', $level)->get();
+        $testName = FallTest::where('id', $test)->first();
+
+        return view('results.test', compact('results', 'testName'));
+    }
+
 }

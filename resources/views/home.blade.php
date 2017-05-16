@@ -13,6 +13,9 @@
                     <p>There are currently <b>{{ $results }}</b> tests entered in the database.</p>
                     <p>Based on the past few years, we are likely {{ round($results/($students*5.84)*100) }}% done.</p>
                     <p><a href="{{ url('input') }}">Click here to access the testing input</a>.</p>
+                    @if(Auth::user()->id == 1)
+                    <p><a href="{{ url('olympika-input') }}">Click here to access the Olympika input</a>.</p>
+                    @endif                    
                     </div>
                 </div>
             </div>

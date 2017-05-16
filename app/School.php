@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class School extends Model
 {
-	return function delegates() {
+	public function delegate() {
 		return $this->hasMany('App\Delegate');
+	}
+
+	public function user() {
+		return $this->hasOne('App\User');
 	}
 }
