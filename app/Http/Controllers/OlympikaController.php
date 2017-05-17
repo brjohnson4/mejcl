@@ -88,7 +88,12 @@ class OlympikaController extends Controller
         $result->Studentid = $request->input('student-id');
         $result->School = Delegate::where('id', $request->input('student-id'))->first()->School;
         $result->Place = $request->input('place');
-        $result->Points = 6 - $request->input('place');
+        if ($request->input('place') <= 5) {
+            $points = 6 - $request->input('place');
+        } else {
+            $points = 0;
+        }
+        $result->Points = $points;
 
         $result->save();
 
@@ -101,7 +106,12 @@ class OlympikaController extends Controller
         $result->Event = $request->input('event-number-school');
         $result->School = $request->input('school');
         $result->Place = $request->input('place-school');
-        $result->Points = 6 - $request->input('place-school');
+        if ($request->input('place-school') <= 5) {
+            $points = 6 - $request->input('place-school');
+        } else {
+            $points = 0;
+        }
+        $result->Points = $points;
 
         $result->save();
 
