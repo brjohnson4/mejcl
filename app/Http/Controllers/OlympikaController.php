@@ -101,7 +101,7 @@ class OlympikaController extends Controller
         $result->Event = $request->input('event-number-school');
         $result->School = $request->input('school');
         $result->Place = $request->input('place-school');
-        $result->Points = 6 - $request->input('place');
+        $result->Points = 6 - $request->input('place-school');
 
         $result->save();
 
