@@ -21,7 +21,6 @@ class CreativeController extends Controller
         $rules = [
             'event-number'  =>  'required|event',
             'student-id'    =>  'required|max:4|min:4|even|convention',
-            'place'         =>  'required|place',
         ];
 
         Validator::extend('event', function($attribute, $value, $parameters) {
@@ -36,12 +35,6 @@ class CreativeController extends Controller
             }
         });
 
-        Validator::extend('place', function($attribute, $value, $parameters) {
-            if($value <= 5 ) {
-                return 'true';
-            }
-        });
-
         Validator::extend('convention', function($attribute, $value, $parameters) {
             if(Delegate::where('id', $value)->where('Spring', 'Y')->first()) {
                 return 'true';
@@ -51,7 +44,6 @@ class CreativeController extends Controller
         $messages = [
             'event' => 'The event number must be between 1 and 40.', 
             'even' => 'All ID numbers must be even', 
-            'place' => 'The highest place for recording is 5th.',
             'convention' => 'This student is not registered for this convention.'
             ];
 
@@ -66,7 +58,7 @@ class CreativeController extends Controller
         $result->Studentid = $request->input('student-id');
         $result->School = Delegate::where('id', $request->input('student-id'))->first()->School;
         $result->Place = $request->input('place');
-        if ($request->input('place') <= 5) {
+        if ($request->input('place') < 6) {
             $points = 6 - $request->input('place');
         } else {
             $points = 0;
