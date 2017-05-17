@@ -45,7 +45,7 @@ class ResultController extends Controller
     	];
 
     	Validator::extend('test', function($attribute, $value, $parameters) {
-    		if($value <= 12 && $value > 0) {
+    		if($value <= 14 && $value > 0) {
     			return 'true';
     		}
     	});
@@ -69,7 +69,7 @@ class ResultController extends Controller
     	});
 
     	$messages = [
-    		'test' => 'The test number must be between 1 and 12.', 
+    		'test' => 'The test number must be between 1 and 14.', 
     		'even' => 'All ID numbers must be even', 
     		'score' => 'The maximum score is 25 points.',
     		'convention' => 'This student is not registered for this convention.'
