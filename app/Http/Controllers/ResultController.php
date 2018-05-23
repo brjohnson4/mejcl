@@ -40,7 +40,7 @@ class ResultController extends Controller
     {
     	$rules = [
     		'test-number' 	=> 	'required|test',
-    		'student-id' 	=>	'required|max:4|min:4|even|convention',
+    		'student-id' 	=>	'required|max:4|min:4|even',
     		'score'			=>	'required|score',
     	];
 
@@ -72,7 +72,7 @@ class ResultController extends Controller
     		'test' => 'The test number must be between 1 and 14.', 
     		'even' => 'All ID numbers must be even', 
     		'score' => 'The maximum score is 25 points.',
-    		'convention' => 'This student is not registered for this convention.'
+    		// 'convention' => 'This student is not registered for this convention.'
     		];
 
     	$validation = Validator::make($request->all(), $rules, $messages);
